@@ -22,7 +22,7 @@ while True:
     print("--- MENU PRINCIPAL DO EVENTO ---")
     print("[1] - Listar todos os eventos  ")
     print("[2] - Listar participantes de um evento  ")
-    print("[3] - Buscar participante por código ")
+    print("[3] - Buscar participante")
     print("[4] - Mostrar participantes mais ativos ")
     print("[5] - Mostrar temas mais frequentes ")
     print("[0] - Sair ")
