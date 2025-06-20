@@ -3,7 +3,7 @@ eventos = {
         {"data": "2025-06-21", 
          "hora": "15:30",
          "tema": "IA", 
-         "participantes":['USER254', 'USER256']},
+         "participantes":['USER254', 'USER256', 'USER257']},
 
     "WebDev Sumit":
         {"data": "2025-06-21", 
@@ -11,11 +11,17 @@ eventos = {
          "tema": "WebDev", 
          "participantes":['USER254', 'USER256']},
         
+       "full stack ":
+        {"data": "2025-06-21", 
+        "hora": "14:20",
+         "tema": "WebDev", 
+         "participantes":['USER254', 'USER256']},
+        
          "CyberDay":
         {"data": "2025-06-22", 
         "hora": "13:00",
          "tema": "Cyber", 
-         "participantes":["USER255"]},
+         "participantes":["USER255", "USER257"]},
         
 }
 
@@ -33,4 +39,11 @@ participantes = {
       "USER256": 
         {"nome": "Vitor Morais",
         "email": "Vitor.Morais@gmail.com", 
-        "cursos_pref": ["IA", "WebDev"]},}
+        "cursos_pref": ["IA", "WebDev"]},
+      
+      "USER257": 
+        {"nome": "Hugo Rodrigues",
+        "email": "Hugo.Freefire@gmail.com", 
+        "cursos_pref": ["IA", "Cyber"]},
+        
+        }
