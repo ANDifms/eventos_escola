@@ -1,4 +1,6 @@
 import includes
+from events import participantes
+
 # o valor selecionado vai ser a função que vai ser executada
 from operations import(
     listar_eventos,
