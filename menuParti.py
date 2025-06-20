@@ -4,14 +4,14 @@ import includes
 from operationAdm import(
     adicionarParticipante,
     editarParticipante,
-    excluirParticipantes
+    excluirParticipante
     # voltar
 )
 
 menu_opcoes = {
     "1": adicionarParticipante,
     "2": editarParticipante,
-    "3": excluirParticipantes,
+    "3": excluirParticipante,
     # "0": voltar
 }
 

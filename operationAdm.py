@@ -39,38 +39,105 @@ def adicionarParticipante():
         print("Tem esse evento nao Paizão, Participante salvo sem evento")
         return
     
+    #com ele aqui fora salva só uma vez
+    events.participantes[novo_cod] = {
+            "nome": nome,
+            "email": email,
+            "cursos_pref": [tema_desejado]  # ou outra lógica se tiver múltiplos cursos
+        }
+
     print("\n Eventos disponiveis com esse tema:")
     for nome_evento in eventos_tema:
         print(f"- {nome_evento}")
         
-    escolha_evento = input("Digite nome do evento: ").strip()
+        escolha_evento = input("Digite nome do evento: ").strip()
     
-    evento_encontrado = None
-    for nome_evento in eventos_tema:
-        if nome_evento.lower() == escolha_evento.lower():
-            evento_encontrado = nome_evento
-            break
-        
-    events.participantes[novo_cod] = {
-        "nome": nome,
-        "email": email,
-        "cursos_pref": [tema_desejado]  # ou outra lógica se tiver múltiplos cursos
-    }
-
-    if evento_encontrado:
-        events.eventos[evento_encontrado]["participantes"].append(novo_cod)
-        print(f"\nParticipante {nome} adicionado com sucesso ao evento '{evento_encontrado}'!")
-    else:
-        print("Evento não encontrado. Participante salvo, mas sem evento.")
+   
+        evento_encontrado = None
+        for nome_evento in eventos_tema:
+            if nome_evento.lower() == escolha_evento.lower():
+                evento_encontrado = nome_evento
+                break
             
+        
+        if evento_encontrado:
+            events.eventos[evento_encontrado]["participantes"].append(novo_cod)
+            print(f"\nParticipante {nome} adicionado com sucesso ao evento '{evento_encontrado}'!")
+            print(f"\033[32m\nParticipante {nome} adicionado com sucesso!! \033[0m")
+        else:
+            print("")
+            print("\033[31mEvento não encontrado. Participante salvo, mas sem evento.\033[0m")
+
+                
             
     
         
 def editarParticipante():
-    print("edtar Participante")
+    print("---- Editar Participante ----")
     
-def excluirParticipantes():
-    print("Excluir Participante")
+    codigo = input("Digite o código do participante (ex: USER254): ").strip().upper()
+    som_select()
+
+    if codigo not in events.participantes:
+        print("Participante não encontrado.")
+        return
+
+    p = events.participantes[codigo]
+
+    print(f"\nNome atual: {p['nome']}")
+    print(f"Email atual: {p['email']}")
+    print(f"Cursos atuais: {', '.join(p['cursos_pref'])}")
+
+    print("\n[1] Editar nome")
+    print("[2] Editar email")
+    print("[3] Editar cursos")
+    print("[0] Cancelar")
+
+    opcao = input("Escolha: ").strip()
+    som_select()
+
+    if opcao == "1":
+        p["nome"] = input("Novo nome: ")
+        som_select()
+        print("Nome atualizado.")
+    elif opcao == "2":
+        p["email"] = input("Novo email: ")
+        som_select()
+        print("Email atualizado.")
+    elif opcao == "3":
+        novos_cursos = []
+        while True:
+            curso = input("Digite um curso (ou 'fim' para encerrar): ").strip()
+            if curso.lower() == "fim":
+                break
+            novos_cursos.append(curso)
+        p["cursos_pref"] = novos_cursos
+        print("Cursos atualizados.")
+    elif opcao == "0":
+        print("Edição cancelada.")
+    else:
+        print("Opção inválida.")
+        
+            
+def excluirParticipante():
+    print("---- Excluir Participante ----")
+
+    codigo = input("Código do participante (ex: USER254): ").strip().upper()
+    som_select()
+
+    if codigo not in events.participantes:
+        print("Participante não encontrado.")
+        return
+
+    # Remove dos eventos
+    for evento in events.eventos.values():
+        if codigo in evento["participantes"]:
+            evento["participantes"].remove(codigo)
+
+    # Remove do dicionário principal
+    del events.participantes[codigo]
+
+print("\033[32mParticipante excluído com sucesso.\033[0m") # imprime o resultado e deixa verde
 
 def voltar():
     print("[0] < voltar")

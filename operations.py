@@ -158,7 +158,7 @@ def login_Adm():
         if escolha == "1":
             menuParti.menu_adm_participantes()
         elif escolha == "2":
-            menuEvent()
+            menuEvent.adicionarEvento()
         else:
             print("sair")
     
