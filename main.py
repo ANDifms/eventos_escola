@@ -8,6 +8,7 @@ from operations import(
     buscar_participante,
     participantes_ativos,
     temas_frequentes,
+    popularidade_curso,
     login_Adm,
     sair
 )
@@ -19,24 +20,27 @@ def menu_principal():
         "3": buscar_participante,
         "4": participantes_ativos,
         "5": temas_frequentes,
-        "6": login_Adm,
+        "6": popularidade_curso,
+        "7": login_Adm,
         "0": sair
     }
 
     while True:
+        includes.barra_progresso("Carregando Menu Principal")
         print("--- MENU PRINCIPAL DO EVENTO ---")
         print("[1] - Listar todos os eventos  ")
         print("[2] - Listar participantes de um evento  ")
         print("[3] - Buscar participante")
         print("[4] - Mostrar participantes mais ativos ")
         print("[5] - Mostrar temas mais frequentes ")
-        print("[6] ADM")
+        print("[6] - Popularidade o Curso")
+        print("[7] ADM")
         print("[0] - Sair ")
         
         #funcao get serve para acessar um valor de uma chave em um dicionario
         escolha = input("Qual sua escolha: ")
         includes.som_select()
-    
+        includes.barra_progresso("Carregando Menu Principal")
         funcao = menu_opcoes.get(escolha)
         
         

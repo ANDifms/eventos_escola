@@ -1,35 +1,40 @@
-import events
-from includes import som_select
+import includes
+#import operationAdm
 
-def adicionarEvento():
-    print(" -- Adicionar Evento --")
-    print("\n ---- ADICIONAR NOVO EVENTO -----")
 
-    nome_evento = input("Nome do evento: ").strip()
-    som_select()
+from operationAdm import(
+    adicionarEvento,
+    editarEvento,
+    excluirEvento
+    # voltar
+)
 
-    data = input("Data do evento (YYYY-MM-DD): ").strip()
-    som_select()
+menu_opcoes = {
+    "1": adicionarEvento,
+    "2": editarEvento,
+    "3": excluirEvento,
+    # "0": voltar
+}
 
-    hora = input("Hora do evento (HH:MM): ").strip()
-    som_select()
+def menu_adm_eventos():
+    while True:
+        print("\n ----- GERENCIAR EVENTOS -----")
+        print("[1] Adicionar Evento")
+        print("[2] edtar Evento")
+        print("[3] Excluir Evento")
+        print("[0] < voltar")
+        
+        escolha = input("Qual sua escolha: ")
+        includes.som_select()
+        
+        if escolha == "0":
+            break
 
-    tema = input("Tema do evento: ").strip()
-    som_select()
-
-    # Inicializa a lista de participantes vazia
-    participantes = []
-
-    if nome_evento in events.eventos:
-        print("\033[31mEvento já existe. Tente outro nome.\033[0m")
-        return
-
-    # Adiciona o novo evento ao dicionário
-    events.eventos[nome_evento] = {
-        "data": data,
-        "hora": hora,
-        "tema": tema,
-        "participantes": participantes
-    }
-
-    print(f"\033[32mEvento '{nome_evento}' adicionado com sucesso!\033[0m")
+    
+        funcao = menu_opcoes.get(escolha)
+        
+        if funcao:
+            funcao()
+        else:
+            print("Tem não Patrão")
+        

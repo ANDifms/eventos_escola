@@ -57,6 +57,7 @@ def buscar_participante():
         p = participantes[res_user] # p vai armazenar os dados do cliente no caso vai puxar do banco a tag - "codigo"
         print(f"Nome - {p['nome']}")
         print(f"Email - {p['email']}")
+        print(f"CPF - {p['cpf']}")
         print(f"Cursos de Preferencia: {', '.join(p['cursos_pref'])}")
         print("")
         
@@ -73,6 +74,7 @@ def buscar_participante():
                 print(f"ID {codigo}")
                 print(f"Nome - {p['nome']}")
                 print(f"Email - {p['email']}")
+                print(f"CPF - {p['cpf']}")
                 print(f"Cursos de Preferencia: {', '.join(p['cursos_pref'])}")
                 print("")
         else:
@@ -141,6 +143,9 @@ def temas_frequentes():
         print(f"{tema} -> {quants} \n")
         print("-" * 30)
     
+def popularidade_curso():
+    includes.popularidade_dos_eventos(eventos)
+
 def login_Adm():
     senha = "Capivara"
         
@@ -157,8 +162,13 @@ def login_Adm():
         escolha = input("Escolha: ") 
         if escolha == "1":
             menuParti.menu_adm_participantes()
+            includes.barra_progresso("Carregando Menu Participantes")
+
+
         elif escolha == "2":
-            menuEvent.adicionarEvento()
+            menuEvent.menu_adm_eventos()
+            includes.barra_progresso("Carregando Menu Eventos")
+
         else:
             print("sair")
     
